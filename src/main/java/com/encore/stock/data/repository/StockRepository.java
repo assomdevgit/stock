@@ -1,0 +1,13 @@
+package com.encore.stock.data.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+
+import com.encore.stock.data.entity.Stock;
+
+public interface StockRepository extends JpaRepository<Stock, String> {
+    @Query("SELECT t FROM Stock t WHERE t.stockCode = :stockcode")
+    List<Stock> queryByStockCode(String stockcode);
+}
